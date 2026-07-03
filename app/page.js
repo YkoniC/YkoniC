@@ -97,43 +97,47 @@ function LogoFull({ variant = "gold", size = "md" }) {
   )
 }
 
-// ─── DONNÉES PRODUITS ─────────────────────────────────────────────────────────
-const fmt = n => new Intl.NumberFormat("fr-FR").format(n) + " FCFA"
-
+// ─── DONNÉES PRODUITS (Nomenclature mise à jour) ─────────────────────────────
 const PRODUCTS = [
   { id:1, name:"Polo YkoniC Blanc", brand:"YkoniC", cat:"Polos",
     price:10000, badge:"Bestseller",
-    img:"/images/polo-blanc-2.jpg", emoji:"👕",
+    images: ["/images/polo-blanc-1.jpg", "/images/polo-blanc-2.jpg"], emoji:"👕",
     sizes:["S","M","L","XL","XXL"],
     desc:"Polo YkoniC blanc en piqué coton premium. Col côtelé tricolore rouge-blanc-noir, broderie couronne YK dorée sur poitrine. Coupe ajustée moderne." },
+  
   { id:2, name:"Polo YkoniC Vert Olive", brand:"YkoniC", cat:"Polos",
     price:10000,
-    img:"/images/polo-olive.jpg", emoji:"👕",
+    images: ["/images/polo-olive.jpg", "/images/polo-olive-1.jpg"], emoji:"👕",
     sizes:["S","M","L","XL","XXL"],
-    desc:"Polo YkoniC vert olive en piqué coton premium. Col côtelé tricolore, broderie couronne YK dorée sur poitrine. Élégant et polyvalent." },
+    desc:"Polo YkoniC vert olive en piqué coton premium. Col côtelé tricolore, broderie couronne YK dorée sur poitrine." },
+    
   { id:3, name:"Polo YkoniC Bleu Navy", brand:"YkoniC", cat:"Polos",
     price:9000, badge:"New",
-    img:"/images/polo-navy-1.jpg", emoji:"👕",
+    images: ["/images/polo-navy-1.jpg", "/images/polo-navy-2.jpg"], emoji:"👕",
     sizes:["S","M","L","XL","XXL"],
-    desc:"Polo YkoniC bleu navy en piqué coton premium. Col côtelé tricolore rouge-blanc-noir, broderie couronne YK dorée. Style premium et raffiné." },
+    desc:"Polo YkoniC bleu navy en piqué coton premium. Col côtelé tricolore, broderie couronne YK dorée." },
+    
   { id:4, name:"T-Shirt Sope YkoniC", brand:"YkoniC", cat:"T-Shirts",
     price:8000,
-    img:"/images/tshirt-sope.jpg", emoji:"👕",
+    images: ["/images/tshirt-sope.jpg", "/images/tshirt-sope-1.jpg"], emoji:"👕",
     sizes:["S","M","L","XL"],
     desc:"T-shirt oversize blanc avec imprimé graffiti Sope. Coton jersey 220g, coupe moderne streetwear." },
+    
   { id:5, name:"T-Shirt Crazy Animals", brand:"YkoniC", cat:"T-Shirts",
     price:8000,
-    img:"/images/tshirt-crazy.jpg", emoji:"👕",
+    images: ["/images/tshirt-crazy.jpg", "/images/tshirt-crazy-1.jpg"], emoji:"👕",
     sizes:["S","M","L","XL"],
     desc:"T-shirt oversize blanc avec imprimé Crazy Animals. Style street art original, coton jersey premium." },
+    
   { id:6, name:"T-Shirt Boston Bear Noir", brand:"YkoniC", cat:"T-Shirts",
     price:8500,
-    img:"/images/tshirt-boston.jpg", emoji:"👕",
+    images: ["/images/tshirt-boston.jpg", "/images/tshirt-boston-1.jpg"], emoji:"👕",
     sizes:["S","M","L","XL"],
     desc:"T-shirt oversize noir avec imprimé Boston Bear. Graphisme streetwear exclusif, coton jersey 220g." },
+    
   { id:7, name:"T-Shirt Celestial Noir", brand:"YkoniC", cat:"T-Shirts",
     price:8500,
-    img:"/images/tshirt-celestial.jpg", emoji:"👕",
+    images: ["/images/tshirt-celestial.jpg", "/images/tshirt-celestial-1.jpg"], emoji:"👕",
     sizes:["S","M","L","XL"],
     desc:"T-shirt oversize noir avec imprimé Celestial Street Market. Style vintage américain, coton jersey premium." },
 ]
@@ -242,7 +246,7 @@ function Card({ p, onView }) {
       {/* Image */}
       <div className="relative aspect-[4/5] overflow-hidden bg-stone-50">
         <img 
-          src={p.img} 
+          src={p.images[0]} // Affiche la première image du tableau
           alt={p.name} 
           className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" 
         />
@@ -576,8 +580,10 @@ function Shop({ onView }) {
   )
 }
 
-// ─── PRODUCT PAGE ─────────────────────────────────────────────────────────────
+// ─── PRODUCT PAGE (Mise à jour avec l'affichage interactif des miniatures) ───
 function ProductPage({ p, onBack }) {
+  // L'état activeImg permet de traquer l'image affichée en grand. Elle prend par défaut la première image du produit.
+  const [activeImg, setActiveImg] = useState(p.images[0])
   const [size, setSize] = useState(null)
   const [liked, setLiked] = useState(false)
   const similar = PRODUCTS.filter(x => x.cat === p.cat && x.id !== p.id).slice(0, 4)
@@ -591,18 +597,28 @@ function ProductPage({ p, onBack }) {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-14 mb-20">
           {/* Visuel */}
           <div className="space-y-4">
-            <div className={`aspect-[4/5] rounded-3xl relative overflow-hidden border border-amber-100 bg-stone-50`}>
-              <img src={p.img} alt={p.name} className="w-full h-full object-cover" />
+            <div className="aspect-[4/5] rounded-3xl relative overflow-hidden border border-amber-100 bg-stone-50">
+              {/* On affiche l'image active ici */}
+              <img src={activeImg} alt={p.name} className="w-full h-full object-cover" />
               <div className="absolute inset-0 bg-gradient-to-tr from-amber-50/10 to-transparent pointer-events-none" />
               {/* Logo watermark */}
               <div className="absolute bottom-4 right-4 opacity-20 pointer-events-none">
                 <LogoFull variant="gold" size="sm" />
               </div>
             </div>
-            {/* Miniatures : Remplacées pour utiliser la véritable image */}
-            <div className="grid grid-cols-4 gap-3">
-              {[p.img, p.img, p.img, p.img].map((imgSrc, i) => (
-                <div key={i} className={`aspect-square rounded-xl flex items-center justify-center overflow-hidden border ${i===0 ? "border-amber-400 ring-2 ring-amber-300/50" : "border-stone-100 opacity-50 hover:opacity-80 cursor-pointer"} transition-all bg-stone-50`}>
+            
+            {/* Génération automatique des miniatures en fonction de la liste d'images */}
+            <div className="flex gap-3 overflow-x-auto py-1">
+              {p.images.map((imgSrc, i) => (
+                <div 
+                  key={i} 
+                  onClick={() => setActiveImg(imgSrc)} // Change l'image affichée en grand au clic
+                  className={`w-20 h-24 rounded-xl flex items-center justify-center overflow-hidden border transition-all bg-stone-50 cursor-pointer flex-shrink-0 ${
+                    activeImg === imgSrc 
+                      ? "border-amber-400 ring-2 ring-amber-300/50 opacity-100" 
+                      : "border-stone-200 opacity-60 hover:opacity-100"
+                  }`}
+                >
                   <img src={imgSrc} alt={`${p.name} - Vue ${i + 1}`} className="w-full h-full object-cover" />
                 </div>
               ))}
@@ -776,8 +792,8 @@ function Cart({ items, onQty, onRemove, onShop, onBack }) {
         <div className="lg:col-span-2 space-y-4">
           {items.map(item => (
             <div key={item.id} className="flex gap-5 p-4 bg-white border border-stone-100 rounded-2xl shadow-sm hover:border-amber-100 transition-all">
-              <div className={`w-24 h-28 rounded-xl flex items-center justify-center flex-shrink-0 border border-amber-50 overflow-hidden bg-stone-50`}>
-                <img src={item.img} alt={item.name} className="w-full h-full object-cover" />
+              <div className="w-24 h-28 rounded-xl flex items-center justify-center flex-shrink-0 border border-amber-50 overflow-hidden bg-stone-50">
+                <img src={item.images[0]} alt={item.name} className="w-full h-full object-cover" />
               </div>
               <div className="flex-1 min-w-0">
                 <div className="flex justify-between gap-2 mb-1">
