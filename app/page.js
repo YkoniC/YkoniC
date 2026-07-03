@@ -103,11 +103,7 @@ const fmt = n => new Intl.NumberFormat("fr-FR").format(n) + " FCFA"
 const PRODUCTS = [
   { id:1, name:"Polo YkoniC Blanc", brand:"YkoniC", cat:"Polos",
     price:10000, badge:"Bestseller",
-    images: [
-    "/images/polo-blanc-1.jpg", 
-    "/images/polo-blanc-2.jpg", 
-    "/images/polo-blanc-3.jpg"
-  ], emoji:"👕",
+    images: ["/images/polo-blanc-1.jpg", "/images/polo-blanc-2.jpg"], emoji:"👕",
     sizes:["S","M","L","XL","XXL"],
     desc:"Polo YkoniC blanc en piqué coton premium. Col côtelé tricolore rouge-blanc-noir, broderie couronne YK dorée sur poitrine. Coupe ajustée moderne." },
   { id:2, name:"Polo YkoniC Vert Olive", brand:"YkoniC", cat:"Polos",
