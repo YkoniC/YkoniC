@@ -8,10 +8,14 @@ import {
   Shield, Truck, RotateCcw, CheckCircle, Phone
 } from "lucide-react"
 
-// ─── CONFIG ───────────────────────────────────────────────────────────────────
+// ─── CONFIG ──────────────────────────────────────────────────────────────────
 const WA = "23590445578"
 const IG = "@ykonic_official"
 const VILLE = "N'Djamena, Tchad"
+
+// DÉPLACEZ LA FONCTION ICI (Juste après les constantes de config)
+const fmt = n => new Intl.NumberFormat("fr-FR").format(n) + " FCFA"
+
 
 // ─── LOGO SVG YKONIC (reconstruit depuis les vrais logos) ─────────────────────
 function YkonicLogo({ size = "md", variant = "gold" }) {
