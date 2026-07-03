@@ -117,7 +117,7 @@ const PRODUCTS = [
     
   { id:3, name:"Polo YkoniC Bleu Navy", brand:"YkoniC", cat:"Polos",
     price:9000, badge:"New",
-    images: ["/images/polo-navy-1.jpg", "/images/polo-navy-2.jpg"], emoji:"👕",
+    images: ["/images/polo-navy-1.jpg", "/images/polo-navy-2.jpg", "/images/polo-navy-3.jpg","/images/polo-navy-4.jpg"], emoji:"👕",
     sizes:["S","M","L","XL","XXL"],
     desc:"Polo YkoniC bleu navy en piqué coton premium. Col côtelé tricolore, broderie couronne YK dorée." },
     
