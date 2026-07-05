@@ -342,7 +342,7 @@ function Home({ onShop, onView }) {
               <GoldDivider />
 
               <p className="text-lg text-stone-500 leading-relaxed mb-10 max-w-md mt-4">
-                Mode premium pour hommes ambitieux. Polos, survêtements, ensembles et accessoires — portez la couronne à N'Djamena.
+                Mode premium pour hommes ambitieux. YkoniC — portez la couronne à N'Djamena.
               </p>
 
               <div className="flex flex-col sm:flex-row gap-3">
