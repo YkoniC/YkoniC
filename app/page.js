@@ -330,14 +330,14 @@ function Home({ onShop, onView }) {
               </div>
 
               <h1 className="text-5xl sm:text-6xl lg:text-7xl font-black text-gray-900 tracking-tight leading-[1.02] mb-4"
-                style={{ fontFamily:"Georgia, 'Times New Roman', serif" }}>
-                Sois
-                <span className="block" style={{ WebkitBackgroundClip:"text", WebkitTextFillColor:"transparent",
-                  backgroundImage:"linear-gradient(135deg, #B8953F 0%, #D4AF5A 50%, #9A7A30 100%)",
-                  backgroundClip:"text" }}>
-                  YkoniC.
-                </span>
-              </h1>
+  style={{ fontFamily:"Georgia, 'Times New Roman', serif" }}>
+  Sois{' '}
+  <span style={{ WebkitBackgroundClip:"text", WebkitTextFillColor:"transparent",
+    backgroundImage:"linear-gradient(135deg, #B8953F 0%, #D4AF5A 50%, #9A7A30 100%)",
+    backgroundClip:"text" }}>
+    YkoniC.
+  </span>
+</h1>
 
               <GoldDivider />
 
