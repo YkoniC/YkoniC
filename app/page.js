@@ -310,19 +310,27 @@ function Home({ onShop, onView }) {
   return (
     <div>
 {/* HERO */}
-<section className="relative overflow-hidden bg-white">
-  <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 lg:py-16">
-    <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
-      {/* Texte */}
-      <div>
-        <div className="inline-flex items-center gap-2 rounded-full px-4 py-2 mb-8 border"
-          style={{borderColor:"#D4AF5A40",background:"#FDF8EE"}}>
-          <span className="w-2 h-2 rounded-full animate-pulse" style={{background:"#B8953F"}} />
-          <span className="text-xs font-semibold tracking-widest uppercase"
-            style={{color:"#B8953F",fontFamily:"Georgia,serif"}}>
-            Nouvelle Collection 2025
-          </span>
-        </div>
+<section className="relative overflow-hidden min-h-[600px] flex items-center">
+  {/* Image de fond */}
+  <img
+    src="/images/cover.jpg"
+    alt="Collection YkoniC 2025"
+    className="absolute inset-0 w-full h-full object-cover object-top"
+  />
+  {/* Overlay sombre pour lisibilité du texte */}
+  <div className="absolute inset-0"
+    style={{background:"linear-gradient(to right, rgba(0,0,0,0.65) 0%, rgba(0,0,0,0.3) 60%, rgba(0,0,0,0.1) 100%)"}} />
+
+  {/* Contenu texte */}
+  <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 lg:py-36">
+    <div className="max-w-xl">
+      <div className="inline-flex items-center gap-2 rounded-full px-4 py-2 mb-8 border"
+        style={{borderColor:"#D4AF5A60",background:"rgba(253,248,238,0.15)",backdropFilter:"blur(8px)"}}>
+        <span className="w-2 h-2 rounded-full animate-pulse" style={{background:"#D4AF5A"}} />
+        <span className="text-xs font-semibold tracking-widest uppercase text-white">
+          Nouvelle Collection 2025
+        </span>
+      </div>
         <h1 className="text-5xl sm:text-6xl lg:text-7xl font-black text-gray-900 tracking-tight leading-[1.02] mb-4"
   style={{ fontFamily:"Georgia, 'Times New Roman', serif" }}>
   Sois{' '}
@@ -332,59 +340,40 @@ function Home({ onShop, onView }) {
     YkoniC.
   </span>
 </h1>
-        <GoldDivider />
-        <p className="text-lg text-stone-500 leading-relaxed mb-10 max-w-md mt-4">
-          Mode premium pour hommes ambitieux. Polos et T-shirts streetwear — portez la couronne à N'Djamena.
-        </p>
-        <div className="flex flex-col sm:flex-row gap-3">
-          <button onClick={onShop}
-            className="inline-flex items-center justify-center gap-2 text-white px-8 py-4 rounded-xl font-bold text-sm hover:opacity-90 shadow-lg"
-            style={{background:"linear-gradient(135deg,#B8953F,#D4AF5A)",boxShadow:"0 8px 24px #B8953F30"}}>
-            Voir la boutique <ArrowRight className="w-4 h-4" />
-          </button>
-          <a href={`https://wa.me/${WA}`} target="_blank" rel="noopener noreferrer"
-            className="inline-flex items-center justify-center gap-2 border-2 text-green-700 bg-green-50 hover:bg-green-100 px-8 py-4 rounded-xl font-bold text-sm transition-colors"
-            style={{borderColor:"#86EFAC"}}>
-            <MessageCircle className="w-4 h-4" /> +235 90 44 55 78
-          </a>
-        </div>
-        <div className="mt-10 flex flex-wrap gap-5 text-sm text-stone-500">
-          {[
-            {Icon:CheckCircle,text:"Qualité garantie",c:"text-green-500"},
-            {Icon:MapPin,text:"Livraison N'Djamena",c:"text-amber-500"},
-            {Icon:Shield,text:"Paiement à la livraison",c:"text-blue-500"},
-          ].map(({Icon,text,c}) => (
-            <span key={text} className="flex items-center gap-1.5">
-              <Icon className={`w-4 h-4 ${c}`} />{text}
-            </span>
-          ))}
-        </div>
+      
+      <div className="flex items-center gap-3 my-4">
+        <div className="flex-1 h-px" style={{background:"linear-gradient(to right, #D4AF5A66, transparent)"}} />
+        <span style={{color:"#D4AF5A",fontSize:"10px"}}>♦</span>
+        <div className="flex-1 h-px" style={{background:"linear-gradient(to left, #D4AF5A66, transparent)"}} />
       </div>
 
-      {/* Image de couverture */}
-      <div className="relative">
-        <div className="rounded-3xl overflow-hidden shadow-2xl">
-          <img
-            src="/images/cover.jpg"
-            alt="Collection YkoniC 2025"
-            className="w-full h-full object-cover"
-          />
-        </div>
-        {/* Floating card prix */}
-        <div className="absolute -bottom-4 -left-4 bg-white rounded-2xl p-4 shadow-xl border border-amber-100">
-          <p className="text-xs text-stone-400 mb-1">⭐ Bestseller</p>
-          <p className="font-black text-gray-900 text-sm" style={{fontFamily:"Georgia,serif"}}>Polo Blanc</p>
-          <p className="font-bold text-sm mt-1" style={{color:"#B8953F"}}>10 000 FCFA</p>
-        </div>
-        {/* Floating card clients */}
-        <div className="absolute -top-4 -right-4 rounded-2xl p-4 shadow-xl text-white"
-          style={{background:"linear-gradient(135deg,#B8953F,#9A7A30)"}}>
-          <p className="text-xs opacity-70 mb-0.5">Clients satisfaits</p>
-          <p className="font-black text-2xl">500+</p>
-          <div className="flex gap-0.5 mt-1">
-            {[...Array(5)].map((_,i) => <Star key={i} className="w-3 h-3 fill-white text-white" />)}
-          </div>
-        </div>
+      <p className="text-lg text-white/80 leading-relaxed mb-10 max-w-md mt-4">
+        Mode premium pour hommes ambitieux. Polos et T-shirts streetwear — portez la couronne à N'Djamena.
+      </p>
+
+      <div className="flex flex-col sm:flex-row gap-3">
+        <button onClick={onShop}
+          className="inline-flex items-center justify-center gap-2 text-white px-8 py-4 rounded-xl font-bold text-sm hover:opacity-90 shadow-lg"
+          style={{background:"linear-gradient(135deg,#B8953F,#D4AF5A)",boxShadow:"0 8px 24px #B8953F50"}}>
+          Voir la boutique <ArrowRight className="w-4 h-4" />
+        </button>
+        <a href={`https://wa.me/${WA}`} target="_blank" rel="noopener noreferrer"
+          className="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-xl font-bold text-sm transition-colors text-white"
+          style={{background:"rgba(37,211,102,0.85)",backdropFilter:"blur(4px)"}}>
+          <MessageCircle className="w-4 h-4" /> +235 90 44 55 78
+        </a>
+      </div>
+
+      <div className="mt-10 flex flex-wrap gap-5 text-sm text-white/80">
+        {[
+          {Icon:CheckCircle,text:"Qualité garantie",c:"text-green-400"},
+          {Icon:MapPin,text:"Livraison N'Djamena",c:"text-amber-400"},
+          {Icon:Shield,text:"Paiement à la livraison",c:"text-blue-400"},
+        ].map(({Icon,text,c}) => (
+          <span key={text} className="flex items-center gap-1.5">
+            <Icon className={`w-4 h-4 ${c}`} />{text}
+          </span>
+        ))}
       </div>
     </div>
   </div>
