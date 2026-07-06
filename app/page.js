@@ -331,7 +331,7 @@ function Home({ onShop, onView }) {
           Nouvelle Collection 2025
         </span>
       </div>
-        <h1 className="text-5xl sm:text-6xl lg:text-7xl font-black text-gray-900 tracking-tight leading-[1.02] mb-4"
+        <h1 className="text-5xl sm:text-6xl lg:text-7xl font-black text-gray-400 tracking-tight leading-[1.02] mb-4"
   style={{ fontFamily:"Georgia, 'Times New Roman', serif" }}>
   Sois{' '}
   <span style={{ WebkitBackgroundClip:"text", WebkitTextFillColor:"transparent",
