@@ -309,27 +309,21 @@ function Home({ onShop, onView }) {
 
   return (
     <div>
-      {/* HERO */}
-      <section className="relative overflow-hidden bg-white">
-        {/* Background gold glow subtil */}
-        <div className="absolute inset-0 pointer-events-none">
-          <div className="absolute -top-32 left-1/2 -translate-x-1/2 w-[600px] h-[400px] rounded-full opacity-10"
-            style={{ background:"radial-gradient(circle, #B8953F 0%, transparent 70%)" }} />
+{/* HERO */}
+<section className="relative overflow-hidden bg-white">
+  <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 lg:py-16">
+    <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
+      {/* Texte */}
+      <div>
+        <div className="inline-flex items-center gap-2 rounded-full px-4 py-2 mb-8 border"
+          style={{borderColor:"#D4AF5A40",background:"#FDF8EE"}}>
+          <span className="w-2 h-2 rounded-full animate-pulse" style={{background:"#B8953F"}} />
+          <span className="text-xs font-semibold tracking-widest uppercase"
+            style={{color:"#B8953F",fontFamily:"Georgia,serif"}}>
+            Nouvelle Collection 2025
+          </span>
         </div>
-
-        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 lg:py-32">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-            {/* Texte */}
-            <div>
-              <div className="inline-flex items-center gap-2 rounded-full px-4 py-2 mb-8 border"
-                style={{ borderColor:"#D4AF5A40", background:"#FDF8EE" }}>
-                <span className="w-2 h-2 rounded-full animate-pulse" style={{ background:"#B8953F" }} />
-                <span className="text-xs font-semibold tracking-widest uppercase" style={{ color:"#B8953F", fontFamily:"Georgia,serif" }}>
-                  Nouvelle Collection 2025
-                </span>
-              </div>
-
-              <h1 className="text-5xl sm:text-6xl lg:text-7xl font-black text-gray-900 tracking-tight leading-[1.02] mb-4"
+        <h1 className="text-5xl sm:text-6xl lg:text-7xl font-black text-gray-900 tracking-tight leading-[1.02] mb-4"
   style={{ fontFamily:"Georgia, 'Times New Roman', serif" }}>
   Sois{' '}
   <span style={{ WebkitBackgroundClip:"text", WebkitTextFillColor:"transparent",
@@ -338,73 +332,64 @@ function Home({ onShop, onView }) {
     YkoniC.
   </span>
 </h1>
+        <GoldDivider />
+        <p className="text-lg text-stone-500 leading-relaxed mb-10 max-w-md mt-4">
+          Mode premium pour hommes ambitieux. Polos et T-shirts streetwear — portez la couronne à N'Djamena.
+        </p>
+        <div className="flex flex-col sm:flex-row gap-3">
+          <button onClick={onShop}
+            className="inline-flex items-center justify-center gap-2 text-white px-8 py-4 rounded-xl font-bold text-sm hover:opacity-90 shadow-lg"
+            style={{background:"linear-gradient(135deg,#B8953F,#D4AF5A)",boxShadow:"0 8px 24px #B8953F30"}}>
+            Voir la boutique <ArrowRight className="w-4 h-4" />
+          </button>
+          <a href={`https://wa.me/${WA}`} target="_blank" rel="noopener noreferrer"
+            className="inline-flex items-center justify-center gap-2 border-2 text-green-700 bg-green-50 hover:bg-green-100 px-8 py-4 rounded-xl font-bold text-sm transition-colors"
+            style={{borderColor:"#86EFAC"}}>
+            <MessageCircle className="w-4 h-4" /> +235 90 44 55 78
+          </a>
+        </div>
+        <div className="mt-10 flex flex-wrap gap-5 text-sm text-stone-500">
+          {[
+            {Icon:CheckCircle,text:"Qualité garantie",c:"text-green-500"},
+            {Icon:MapPin,text:"Livraison N'Djamena",c:"text-amber-500"},
+            {Icon:Shield,text:"Paiement à la livraison",c:"text-blue-500"},
+          ].map(({Icon,text,c}) => (
+            <span key={text} className="flex items-center gap-1.5">
+              <Icon className={`w-4 h-4 ${c}`} />{text}
+            </span>
+          ))}
+        </div>
+      </div>
 
-              <GoldDivider />
-
-              <p className="text-lg text-stone-500 leading-relaxed mb-10 max-w-md mt-4">
-                Mode premium pour hommes ambitieux. YkoniC — portez la couronne à N'Djamena.
-              </p>
-
-              <div className="flex flex-col sm:flex-row gap-3">
-                <button onClick={onShop}
-                  className="inline-flex items-center justify-center gap-2 text-white px-8 py-4 rounded-xl font-bold text-sm transition-all hover:opacity-90 shadow-lg"
-                  style={{ background:"linear-gradient(135deg, #B8953F, #D4AF5A)", boxShadow:"0 8px 24px #B8953F30" }}>
-                  Voir la boutique <ArrowRight className="w-4 h-4" />
-                </button>
-                <a href={`https://wa.me/${WA}`} target="_blank" rel="noopener noreferrer"
-                  className="inline-flex items-center justify-center gap-2 border-2 text-green-700 bg-green-50 hover:bg-green-100 px-8 py-4 rounded-xl font-bold text-sm transition-colors"
-                  style={{ borderColor:"#86EFAC" }}>
-                  <MessageCircle className="w-4 h-4" /> +235 90 44 55 78
-                </a>
-              </div>
-
-              {/* Trust badges */}
-              <div className="mt-10 flex flex-wrap gap-5 text-sm text-stone-500">
-                {[
-                  { icon: CheckCircle, text:"Qualité garantie", color:"text-green-500" },
-                  { icon: MapPin, text:"Livraison N'Djamena", color:"text-amber-500" },
-                  { icon: Shield, text:"Paiement à la livraison", color:"text-blue-500" },
-                ].map(({ icon: Icon, text, color }) => (
-                  <span key={text} className="flex items-center gap-1.5">
-                    <Icon className={`w-4 h-4 ${color}`} /> {text}
-                  </span>
-                ))}
-              </div>
-            </div>
-
-            {/* Visual hero */}
-            <div className="hidden lg:block relative">
-              <div className="w-full aspect-square rounded-3xl overflow-hidden relative flex items-center justify-center"
-                style={{ background:"linear-gradient(135deg, #FDF8EE 0%, #F5EDD4 100%)" }}>
-                {/* Logo géant en arrière-plan */}
-                <div className="absolute inset-0 flex items-center justify-center opacity-10">
-                  <LogoFull variant="gold" size="lg" />
-                </div>
-                <span className="text-[140px] select-none opacity-20">👑</span>
-
-                {/* Gradient overlay bas */}
-                <div className="absolute bottom-0 left-0 right-0 h-1/3 bg-gradient-to-t from-white/20 to-transparent" />
-              </div>
-
-              {/* Floating cards */}
-              <div className="absolute -bottom-4 -left-6 bg-white rounded-2xl p-4 shadow-xl border border-amber-100">
-                <p className="text-xs text-stone-400 mb-1">⭐ Bestseller</p>
-                <p className="font-black text-gray-900 text-sm" style={{ fontFamily:"Georgia,serif" }}>Polo Signature</p>
-                <p className="font-bold text-sm mt-1" style={{ color:"#B8953F" }}>18 500 FCFA</p>
-              </div>
-              <div className="absolute -top-4 -right-4 rounded-2xl p-4 shadow-xl text-white"
-                style={{ background:"linear-gradient(135deg, #B8953F, #9A7A30)" }}>
-                <p className="text-xs opacity-70 mb-0.5">Clients satisfaits</p>
-                <p className="font-black text-2xl">500+</p>
-                <div className="flex gap-0.5 mt-1">
-                  {[...Array(5)].map((_,i) => <Star key={i} className="w-3 h-3 fill-white text-white" />)}
-                </div>
-              </div>
-            </div>
+      {/* Image de couverture */}
+      <div className="relative">
+        <div className="rounded-3xl overflow-hidden shadow-2xl">
+          <img
+            src="/images/cover.jpg"
+            alt="Collection YkoniC 2025"
+            className="w-full h-full object-cover"
+          />
+        </div>
+        {/* Floating card prix */}
+        <div className="absolute -bottom-4 -left-4 bg-white rounded-2xl p-4 shadow-xl border border-amber-100">
+          <p className="text-xs text-stone-400 mb-1">⭐ Bestseller</p>
+          <p className="font-black text-gray-900 text-sm" style={{fontFamily:"Georgia,serif"}}>Polo Blanc</p>
+          <p className="font-bold text-sm mt-1" style={{color:"#B8953F"}}>10 000 FCFA</p>
+        </div>
+        {/* Floating card clients */}
+        <div className="absolute -top-4 -right-4 rounded-2xl p-4 shadow-xl text-white"
+          style={{background:"linear-gradient(135deg,#B8953F,#9A7A30)"}}>
+          <p className="text-xs opacity-70 mb-0.5">Clients satisfaits</p>
+          <p className="font-black text-2xl">500+</p>
+          <div className="flex gap-0.5 mt-1">
+            {[...Array(5)].map((_,i) => <Star key={i} className="w-3 h-3 fill-white text-white" />)}
           </div>
         </div>
-      </section>
-
+      </div>
+    </div>
+  </div>
+</section>
+        
       {/* CATÉGORIES */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-14">
         <div className="text-center mb-8">
